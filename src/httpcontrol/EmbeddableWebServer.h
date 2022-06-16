@@ -109,6 +109,7 @@ static bool OptionPrintResponse = false;
 #include <time.h>
 #include <signal.h>
 #include <stdint.h>
+#define __STDC_FORMAT_MACROS 1
 #include <inttypes.h>
 
 #ifdef WIN32
