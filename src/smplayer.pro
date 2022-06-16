@@ -699,7 +699,7 @@ win32 {
 	win32-msvc* {
 		LIBS += -luser32 -lole32 -lws2_32
 	} else {
-		LIBS += libole32
+		LIBS += libole32 libws2_32
 	}
 	
 	LIBS += -ldsound -lddraw
