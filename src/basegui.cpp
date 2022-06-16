@@ -114,6 +114,10 @@
 #include "mpris2/mpris2.h"
 #endif
 
+#ifdef HTTPCONTROL
+#include "httpcontrol/httpcontrol.h"
+#endif
+
 #include "extensions.h"
 #include "version.h"
 
@@ -272,6 +276,10 @@ BaseGui::BaseGui( QWidget* parent, Qt::WindowFlags flags )
 
 #ifdef MPRIS2
 	if (pref->use_mpris2) new Mpris2(this, this);
+#endif
+
+#ifdef HTTPCONTROL
+	new HTTPControl(this, 8189, this);
 #endif
 
 	MyFileDialog::setNative(pref->use_native_open_dialog);

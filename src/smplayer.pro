@@ -25,6 +25,7 @@ DEFINES += MINIGUI
 DEFINES += MPCGUI
 DEFINES += SKINS
 DEFINES += MPRIS2
+DEFINES += HTTPCONTROL
 DEFINES += UPDATE_CHECKER
 #DEFINES += CHECK_UPGRADED
 DEFINES += AUTO_SHUTDOWN_PC
@@ -103,7 +104,7 @@ isEqual(QT_MAJOR_VERSION, 5) {
 	QT += widgets gui
 	#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x040000
 	win32 {
-		#DEFINES -= MPRIS2
+		DEFINES -= MPRIS2
 	}
 }
 
@@ -147,7 +148,7 @@ macx {
 	DEFINES -= GLOBALSHORTCUTS
 	DEFINES -= AUTO_SHUTDOWN_PC
 	DEFINES -= SINGLE_INSTANCE
-	#DEFINES -= MPRIS2
+	DEFINES -= MPRIS2
 	DEFINES += USE_SHM
 	DEFINES += USE_COREVIDEO_BUFFER
 	DEFINES += USE_GL_WINDOW
@@ -510,6 +511,15 @@ contains( DEFINES, MPRIS2 ) {
 	SOURCES += mpris2/mediaplayer2.cpp mpris2/mediaplayer2player.cpp mpris2/mpris2.cpp
 
 	QT += dbus
+}
+
+contains( DEFINES, HTTPCONTROL ) {
+	INCLUDEPATH += httpcontrol
+	DEPENDPATH += httpcontrol
+
+	HEADERS += httpcontrol/httpcontrol.h
+	SOURCES += httpcontrol/httpcontrol.cpp
+
 }
 
 # Update checker
