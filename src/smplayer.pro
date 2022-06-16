@@ -697,7 +697,7 @@ win32 {
 	}
 
 	win32-msvc* {
-		LIBS += -luser32 -lole32
+		LIBS += -luser32 -lole32 -lws2_32
 	} else {
 		LIBS += libole32
 	}
