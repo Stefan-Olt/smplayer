@@ -77,8 +77,10 @@ void HTTPControl::open(QString name)
 
 struct Response* HTTPControl::createResponseForRequest(const struct Request* request, struct Connection* connection)
 {
+#ifndef WIN32
     locale_t c = newlocale (LC_MESSAGES_MASK, "C", (locale_t)0);
     uselocale (c);
+#endif
     
     if(strcmp(request->method,"POST")==0) {
 		char *cmd = strdupDecodePOSTParam("command=", request, "X");

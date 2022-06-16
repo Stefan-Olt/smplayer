@@ -825,7 +825,11 @@ void heapStringAppendFormatV(struct HeapString* string, const char* format, va_l
     heapStringReallocIfNeeded(string, requiredCapacity);
     assert(string->capacity >= string->length + appendLength + 1);
     /* perform the actual vsnprintf that does the work */
+#ifdef WIN32
+    size_t actualAppendLength = _vsnprintf_l(&string->contents[string->length], string->capacity - string->length, format, _create_locale(LC_ALL, "C"), apCopy);
+#else
     size_t actualAppendLength = vsnprintf(&string->contents[string->length], string->capacity - string->length, format, apCopy);
+#endif
     string->length += appendLength;
     assert(actualAppendLength == appendLength && "We called vsnprintf twice with the same format and value arguments and got different string lengths");
     /* explicitly null terminate in case I messed up the vsnprinf logic */
