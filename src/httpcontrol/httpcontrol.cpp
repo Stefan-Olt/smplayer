@@ -38,6 +38,7 @@
  ***********************************************************************/
 
 #include <QMetaObject>
+#include <locale.h>
 #include "httpcontrol.h"
 #include "basegui.h"
 #include "core.h"
