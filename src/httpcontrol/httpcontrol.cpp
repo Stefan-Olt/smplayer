@@ -39,6 +39,9 @@
 
 #include <QMetaObject>
 #include <locale.h>
+#ifdef Q_OS_MACX
+#include <xlocale.h>
+#endif
 #include "httpcontrol.h"
 #include "basegui.h"
 #include "core.h"
