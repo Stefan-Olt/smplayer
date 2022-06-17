@@ -77,7 +77,7 @@ SMPlayer::SMPlayer(const QString & config_path, QObject * parent )
 	allow_to_send_log_to_gui = true;
 #endif
 
-	gui_to_use = "DefaultGUI";
+	gui_to_use = "MpcGUI";
 
 	close_at_end = -1; // Not set
 	start_in_fullscreen = -1; // Not set
